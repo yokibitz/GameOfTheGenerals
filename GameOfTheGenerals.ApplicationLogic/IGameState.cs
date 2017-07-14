@@ -1,4 +1,6 @@
-﻿namespace GameOfTheGenerals.ApplicationLogic
+﻿using System.Collections.Generic;
+
+namespace GameOfTheGenerals.ApplicationLogic
 {
     public interface IGameState
     {

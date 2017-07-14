@@ -29,16 +29,16 @@ namespace GameOfTheGenerals.ApplicationLogic
             this.GameState = new GameState(board, player1, player2, player1);
         }
 
-        public IGameState Move(int fromPosition, int toPosition)
+        public IMoveResult Move(int fromPosition, int toPosition)
         {
             var moveResult = GameState.Board.Move(fromPosition, toPosition);
 
             GameState.Player1.UpdatePieces(moveResult);
             GameState.Player2.UpdatePieces(moveResult);
-
+            
             GameState.ToggleActivePlayer();
 
-            return GameState;
+            return moveResult;
         }        
 
         private static void CheckAttackLogic()

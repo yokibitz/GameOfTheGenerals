@@ -16,7 +16,7 @@ namespace GameOfTheGenerals.ApplicationLogic
             this.ActivePieces = activePieces;
             this.LostPieces = lostPieces;
         }
-        public void UpdatePieces(MoveResult moveResult)
+        public void UpdatePieces(IMoveResult moveResult)
         {
             foreach (var lostPiece in moveResult.GetLostPieces().Where(p => p.PlayerId == Id))
             {

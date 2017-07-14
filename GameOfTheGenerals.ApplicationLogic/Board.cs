@@ -76,13 +76,13 @@ namespace GameOfTheGenerals.ApplicationLogic
             while (listOfSpots.Count > 0);
         }
 
-        public MoveResult Move(int fromPosition, int toPosition)
+        public IMoveResult Move(int fromPosition, int toPosition)
         {
             var origin = GetSquare(fromPosition);
             var destination = GetSquare(toPosition);
             var attacker = origin.ContainedPiece;
             var attacked = destination.ContainedPiece;
-            var moveResult = new MoveResult();
+            var moveResult = new MoveResult(origin, destination);
             if(attacked == null)
             {
                 PlacePieceInPosition(attacker, toPosition);

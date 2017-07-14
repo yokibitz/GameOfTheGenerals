@@ -49,6 +49,7 @@
     <Compile Include="IArbiter.cs" />
     <Compile Include="IBoard.cs" />
     <Compile Include="IGame.cs" />
+    <Compile Include="IMoveResult.cs" />
     <Compile Include="IPiece.cs" />
     <Compile Include="IPlayer.cs" />
     <Compile Include="ISquare.cs" />

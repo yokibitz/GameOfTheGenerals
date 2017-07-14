@@ -1,18 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace GameOfTheGenerals.ApplicationLogic
 {
-    public class MoveResult
+    [Serializable]
+    public class MoveResult : IMoveResult
     {
-        public MoveResult()
+        public MoveResult(ISquare origin, ISquare destination)
         {
-
-        }
-        public MoveResult(BattleResult battleResult)
-        {
-            BattleResult = battleResult;
+            UpdatedSquares = new ISquare[] { origin, destination };
         }
 
         public IEnumerable<IPiece> GetLostPieces()
@@ -25,5 +23,6 @@ namespace GameOfTheGenerals.ApplicationLogic
             return Enumerable.Empty<IPiece>();
         }
         public BattleResult BattleResult { get; set; }
+        public IEnumerable<ISquare> UpdatedSquares { get; set; }
     }
 }

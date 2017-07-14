@@ -7,6 +7,6 @@ namespace GameOfTheGenerals.ApplicationLogic
         int Id { get; }
         ICollection<IPiece> ActivePieces { get; }
         ICollection<IPiece> LostPieces { get; }
-        void UpdatePieces(MoveResult moveResult);
+        void UpdatePieces(IMoveResult moveResult);
     }
 }

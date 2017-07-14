@@ -7,6 +7,6 @@ namespace GameOfTheGenerals.ApplicationLogic
         ISquare[,] GameBoard { get; }
         ISquare GetSquare(int position);
         void InitializePieceSetup(List<IPiece> player1ActivePieces, List<IPiece> player2ActivePieces);
-        MoveResult Move(int fromPosition, int toPosition);
+        IMoveResult Move(int fromPosition, int toPosition);
     }
 }
