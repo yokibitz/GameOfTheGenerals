@@ -38,6 +38,11 @@ namespace GameOfTheGenerals.ApplicationLogic
                 this.PlacePieceInPosition(item.Piece, item.Position);
             };
         }
+        private void MoveContainedPiece(ISquare origin, ISquare destination)
+        {
+            PlacePieceOnSquare(origin.ContainedPiece, destination);
+            origin.ContainedPiece = null;            
+        }
         private void PlacePieceInPosition(IPiece piece, int position)
         {
             PlacePieceOnSquare(piece, GetSquare(position));
@@ -48,6 +53,11 @@ namespace GameOfTheGenerals.ApplicationLogic
         }
         public ISquare GetSquare(int position)
         {
+            if(!IsValidPosition(position))
+            {
+                return null;
+            }
+
             int x = position % X;
             int y = position / X;
 
@@ -78,14 +88,25 @@ namespace GameOfTheGenerals.ApplicationLogic
 
         public IMoveResult Move(int fromPosition, int toPosition)
         {
+            if(!IsValidMove(fromPosition, toPosition))
+            {
+                return new InvalidMoveResult();
+            }
+
             var origin = GetSquare(fromPosition);
             var destination = GetSquare(toPosition);
             var attacker = origin.ContainedPiece;
             var attacked = destination.ContainedPiece;
+
+            if(attacker == null || attacked != null && attacker.PlayerId == attacked.PlayerId)
+            {
+                return new InvalidMoveResult();
+            }
+
             var moveResult = new MoveResult(origin, destination);
             if(attacked == null)
             {
-                PlacePieceInPosition(attacker, toPosition);
+                MoveContainedPiece(origin, destination);
             }
             else
             {
@@ -94,6 +115,23 @@ namespace GameOfTheGenerals.ApplicationLogic
                 ApplyBattleResult(origin, destination, moveResult.BattleResult);
             }
             return moveResult;
+        }
+
+        private bool IsValidPosition(int position)
+        {
+            return position >= 0
+                && position < X * Y;
+        }
+
+        private bool IsValidMove(int fromPosition, int toPosition)
+        {
+            return IsValidPosition(fromPosition)
+                && IsValidPosition(toPosition)
+                && fromPosition != toPosition
+                && (toPosition - fromPosition == 1
+                    || fromPosition - toPosition == 1
+                    || toPosition - fromPosition == 9
+                    || fromPosition - toPosition == 9);
         }
 
         private void ApplyBattleResult(ISquare origin, ISquare destination, BattleResult battleResult)
@@ -105,7 +143,7 @@ namespace GameOfTheGenerals.ApplicationLogic
             }
             else
             {
-                PlacePieceOnSquare(battleResult.Winner, destination);
+                MoveContainedPiece(origin, destination);
             }
         }
 

@@ -5,5 +5,6 @@ namespace GameOfTheGenerals.ApplicationLogic
         int GameID { get; }
         string GameCode { get; }
         IGameState GameState { get; }
+        IMoveResult Move(int fromPosition, int toPosition);
     }
 }

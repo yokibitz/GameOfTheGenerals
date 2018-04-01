@@ -4,8 +4,8 @@ namespace GameOfTheGenerals.ApplicationLogic
 {
     public interface IMoveResult
     {
-        BattleResult BattleResult { get; set; }
-        IEnumerable<ISquare> UpdatedSquares { get; set; }
+        BattleResult BattleResult { get; }
+        IEnumerable<ISquare> UpdatedSquares { get; }
         IEnumerable<IPiece> GetLostPieces();
     }
 }

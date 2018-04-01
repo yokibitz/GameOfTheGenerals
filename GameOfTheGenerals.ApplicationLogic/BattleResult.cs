@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,11 +13,13 @@ namespace GameOfTheGenerals.ApplicationLogic
         private BattleResult()
         {
             IsDraw = true;
+            LostPieces = new Collection<IPiece>();
         }
         private BattleResult(IPiece winner, IPiece loser)
         {
             this.IsDraw = false;
             this.Winner = winner;
+            LostPieces = new Collection<IPiece>();
             LostPieces.Add(loser);
         }
 

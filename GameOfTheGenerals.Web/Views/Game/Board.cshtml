@@ -1,0 +1,16 @@
+﻿@model GameViewModel
+@using GameOfTheGenerals.Web.Models
+
+<div>
+    <table id='game'></table>
+</div>
+
+@section scripts
+    {
+    <script src="~/js/jsboard.js"></script>
+    @*<script>
+        var b = jsboard.board({ attach: "game", size: "8x8", style: "checkerboard" });
+        b.cell("each").style({ width: "60px", height: "60px" });
+    </script>*@
+    <script src="~/js/game.js" asp-append-version="true"></script>
+} 

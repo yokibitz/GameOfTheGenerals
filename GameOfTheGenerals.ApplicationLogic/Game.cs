@@ -8,7 +8,7 @@ namespace GameOfTheGenerals.ApplicationLogic
     {
         public Game()
         {
-
+            InitializeGameState();
         }
         public Game(IGameState gameState)
         {
@@ -33,10 +33,13 @@ namespace GameOfTheGenerals.ApplicationLogic
         {
             var moveResult = GameState.Board.Move(fromPosition, toPosition);
 
-            GameState.Player1.UpdatePieces(moveResult);
-            GameState.Player2.UpdatePieces(moveResult);
-            
-            GameState.ToggleActivePlayer();
+            if (moveResult is MoveResult)
+            {
+                GameState.Player1.UpdatePieces(moveResult);
+                GameState.Player2.UpdatePieces(moveResult);
+
+                GameState.ToggleActivePlayer();
+            }
 
             return moveResult;
         }        
