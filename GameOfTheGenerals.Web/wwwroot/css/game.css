@@ -1,0 +1,9 @@
+﻿.piece {
+    text-indent: -9999px;
+    background: gray center no-repeat;
+    width: 68px;
+    height: 58px;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 6px;
+}

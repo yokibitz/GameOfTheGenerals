@@ -147,7 +147,7 @@ window.jsboard = (function () {
                                     while (th.firstChild) { th.removeChild(th.firstChild); }
                                     var ra = Math.floor((Math.random() * 3000) + 1);
                                     var n = piece.cloneNode(true);
-                                    n.className = "pieceID_" + ra;
+                                    n.className = "pieceID_" + ra + ' ' + n.className;
                                     th.appendChild(n);
                                 }
                             }
@@ -269,7 +269,7 @@ window.jsboard = (function () {
             clone: function () {
                 var nn = node.cloneNode(true);
                 var ra = Math.floor((Math.random() * 3000) + 1);
-                nn.className = "pieceID_" + ra;
+                nn.className = "pieceID_" + ra + ' ' + nn.className;
                 return nn;
             },
             style: function (props) {
@@ -350,12 +350,18 @@ window.jsboard = (function () {
                 var n = document.createTextNode(props.text);
                 a.appendChild(n);
             }
+
+            a.className = "piece";
+
             // add styles
             for (var st in props) {
-                if (st != "text") {
+                if (st != "text" && st != "className") {
                     a.style[st] = props[st];
                 }
             }
+
+            a.style["backgroundImage"] = "url(images/" + props.text + ".ico)";
+
             return Piece(a);
         }
 
