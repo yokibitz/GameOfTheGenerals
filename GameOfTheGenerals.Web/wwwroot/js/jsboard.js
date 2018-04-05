@@ -346,12 +346,16 @@ window.jsboard = (function () {
         piece: function (props) {
             // create new DOM node to serve as piece
             var a = document.createElement("div");
+            a.className = "piece";
+
             if (props.text) {
                 var n = document.createTextNode(props.text);
                 a.appendChild(n);
-            }
 
-            a.className = "piece";
+                if (props.text !== "OPP") {
+                    a.style["backgroundImage"] = "url(images/" + props.text + ".ico)";
+                }
+            }
 
             // add styles
             for (var st in props) {
@@ -359,8 +363,6 @@ window.jsboard = (function () {
                     a.style[st] = props[st];
                 }
             }
-
-            a.style["backgroundImage"] = "url(images/" + props.text + ".ico)";
 
             return Piece(a);
         }
