@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Enums.NET, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7ea1c1650d506225, processorArchitecture=MSIL">
+      <HintPath>..\packages\Enums.NET.2.3.1\lib\net45\Enums.NET.dll</HintPath>
+    </Reference>
     <Reference Include="FsCheck, Version=2.10.8.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FsCheck.2.10.8\lib\net452\FsCheck.dll</HintPath>
     </Reference>

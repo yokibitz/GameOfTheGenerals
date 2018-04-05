@@ -13,4 +13,9 @@
     {
     <script src="~/js/jsboard.js"></script>
     <script src="~/js/game.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        var model = @Html.Raw(Json.Serialize(Model));
+        init(model);
+    </script>
+
 } 

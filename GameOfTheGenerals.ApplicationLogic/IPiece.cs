@@ -1,4 +1,6 @@
 using System;
+using System.ComponentModel;
+using EnumsNET;
 
 namespace GameOfTheGenerals.ApplicationLogic
 {
@@ -22,6 +24,9 @@ namespace GameOfTheGenerals.ApplicationLogic
             }
         }
         public int PlayerId { get; private set; }
+
+        public string RankCode => Rank.GetAttributes().Get<DescriptionAttribute>().Description;
+
         public override string ToString()
         {
             return Rank.ToString();
@@ -43,7 +48,7 @@ namespace GameOfTheGenerals.ApplicationLogic
     public interface IPiece
     {
         Rank Rank { get; }
-
+        string RankCode { get; }
         bool Is(Rank rank);
         int PlayerId { get; }
     }

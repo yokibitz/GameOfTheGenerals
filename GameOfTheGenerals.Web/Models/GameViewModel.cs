@@ -9,6 +9,13 @@ namespace GameOfTheGenerals.Web.Models
 {
     public class GameViewModel
     {
-        public IGame Game { get; }
+        private readonly IGame _game;
+
+        public IGame Game => _game;
+
+        public GameViewModel(IGame game)
+        {
+            _game = game;
+        }
     }
 }
