@@ -38,7 +38,7 @@ namespace GameOfTheGenerals.ApplicationLogic
                 GameState.Player1.UpdatePieces(moveResult);
                 GameState.Player2.UpdatePieces(moveResult);
 
-                GameState.ToggleActivePlayer();
+                //GameState.ToggleActivePlayer();
             }
 
             return moveResult;

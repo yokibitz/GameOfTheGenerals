@@ -47,7 +47,7 @@ namespace GameOfTheGenerals.Web
             //       name: "default",
             //       template: "{controller=Game}/{action=Board}/{id?}");
             //});
-
+            app.UseWebSockets();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
