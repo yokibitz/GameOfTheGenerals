@@ -23,8 +23,8 @@ namespace GameOfTheGenerals.ApplicationLogic
             List<IPiece> player2ActivePieces = CreateDefaultActivePieces(2).ToList();
             board.InitializePieceSetup(player1ActivePieces, player2ActivePieces);
             
-            var player1 = new Player(1, player1ActivePieces, new List<IPiece>());
-            var player2 = new Player(2, player2ActivePieces, new List<IPiece>());
+            var player1 = new Player(1, board.GameBoard.Where(s => s.ContainedPiece?.PlayerId == 1).ToList(), new List<IPiece>());
+            var player2 = new Player(2, board.GameBoard.Where(s => s.ContainedPiece?.PlayerId == 2).ToList(), new List<IPiece>());
 
             this.GameState = new GameState(board, player1, player2, player1);
         }

@@ -22,5 +22,12 @@ namespace GameOfTheGenerals.Web.Controllers
         {
             return View(new GameViewModel(_game));
         }
+
+        [HttpPost]
+        public JsonResult Move(int fromPosition, int toPosition)
+        {
+            var result = _game.Move(fromPosition, toPosition);
+            return Json(true);
+        }
     }
 }

@@ -8,13 +8,11 @@ namespace GameOfTheGenerals.ApplicationLogic
     {
         public Board()
         {
-            this.GameBoard = new ISquare[Y, X];
+            this.GameBoard = new ISquare[Y * X];
 
             for (int position = 0; position < (Y * X); position++)
             {
-                int x = position % X;
-                int y = position / X;
-                GameBoard[y, x] = new Square(position);
+                GameBoard[position] = new Square(position);
             }
         }
 
@@ -58,15 +56,15 @@ namespace GameOfTheGenerals.ApplicationLogic
                 return null;
             }
 
-            int x = position % X;
-            int y = position / X;
+            //int x = position % X;
+            //int y = position / X;
 
-            ISquare square = GameBoard[y, x];
+            ISquare square = GameBoard[position];
 
             if (square == null)
             {
                 square = new Square(position);
-                GameBoard[y, x] = square;
+                GameBoard[position] = square;
             }
 
             return square;
@@ -147,7 +145,7 @@ namespace GameOfTheGenerals.ApplicationLogic
             }
         }
 
-        public ISquare[,] GameBoard { get; private set; }
+        public ISquare[] GameBoard { get; private set; }
         private const int X = 9;
         private const int Y = 8;
     }
