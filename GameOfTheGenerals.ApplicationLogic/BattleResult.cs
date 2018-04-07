@@ -19,8 +19,10 @@ namespace GameOfTheGenerals.ApplicationLogic
         {
             this.IsDraw = false;
             this.Winner = winner;
-            LostPieces = new Collection<IPiece>();
-            LostPieces.Add(loser);
+            LostPieces = new Collection<IPiece>
+            {
+                loser
+            };
         }
 
         public static BattleResult WinResult(IPiece winner, IPiece loser)

@@ -72,8 +72,7 @@ namespace GameOfTheGenerals.ApplicationLogic
 
             while (input != "exit")
             {
-                int position = 0;
-                if (int.TryParse(input, out position))
+                if (int.TryParse(input, out int position))
                 {
                     var pieceAtPosition = board.GetSquare(position).ContainedPiece;
 

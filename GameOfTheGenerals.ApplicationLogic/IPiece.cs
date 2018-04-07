@@ -36,11 +36,14 @@ namespace GameOfTheGenerals.ApplicationLogic
         {
             if (obj == null) return 1;
 
-            IPiece otherPiece = obj as IPiece;
-            if (otherPiece != null)
+            if (obj is IPiece otherPiece)
+            {
                 return this.Rank.CompareTo(otherPiece.Rank);
+            }
             else
+            {
                 throw new ArgumentException("Object is not a Piece");
+            }
         }
 
         private readonly Rank _rank;
